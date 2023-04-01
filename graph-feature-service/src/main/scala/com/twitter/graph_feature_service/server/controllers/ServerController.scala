@@ -25,7 +25,7 @@ class ServerController @Inject() (
       .andThen(Service.mk(serverGetIntersectionHandler))
 
   val getIntersection: Service[GetIntersection.Args, GfsIntersectionResponse] = { args =>
-    // TODO: Disable updateCache after HTL switch to use PresetIntersection endpoint.
+    // TODO(yqian): Disable updateCache after HTL switch to use PresetIntersection endpoint.
     getIntersectionService(
       GetIntersectionRequest.fromGfsIntersectionRequest(args.request, cacheable = true))
   }
@@ -35,7 +35,7 @@ class ServerController @Inject() (
     GetPresetIntersection.Args,
     GfsIntersectionResponse
   ] = { args =>
-    // TODO: Refactor after HTL switch to PresetIntersection
+    // TODO(yqian): Refactor after HTL switch to PresetIntersection
     val cacheable = args.request.presetFeatureTypes == PresetFeatureTypes.HtlTwoHop
     getIntersectionService(
       GetIntersectionRequest.fromGfsPresetIntersectionRequest(args.request, cacheable))

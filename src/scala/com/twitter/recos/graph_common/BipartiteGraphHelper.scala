@@ -8,6 +8,7 @@ import scala.collection.mutable.ListBuffer
  * The helper class encodes and decodes tweet ids with tweetypie's card information
  * when querying recos salsa library. Inside salsa library, all tweet ids are
  * encoded with card information for the purpose of inline filtering.
+ * TODO (wenqih) change TweetIDMask to a mask interface for future extension
  */
 class BipartiteGraphHelper(graph: BipartiteGraph) {
   private val tweetIDMask = new TweetIDMask

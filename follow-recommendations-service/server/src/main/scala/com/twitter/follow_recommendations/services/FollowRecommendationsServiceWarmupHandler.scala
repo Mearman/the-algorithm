@@ -24,6 +24,10 @@ class FollowRecommendationsServiceWarmupHandler @Inject() (warmup: ThriftWarmup)
     extends Handler
     with Logging {
 
+  /**
+   * this would need to be added to src/main/resources/client_whitelist.yml
+   * if we implement ClientId filtering in the future
+   */
   private val clientId = ClientId("thrift-warmup-client")
 
   override def handle(): Unit = {
@@ -44,7 +48,7 @@ class FollowRecommendationsServiceWarmupHandler @Inject() (warmup: ThriftWarmup)
       RecommendationRequest(
         clientContext = clientContext,
         displayLocation = displayLocation,
-        displayContext = None,
+        displayContext = Some(DisplayContext.Profile(Profile(12L))),
         maxResults = Some(3),
         fetchPromotedContent = Some(false),
         debugParams = Some(DebugParams(doNotLog = Some(true)))

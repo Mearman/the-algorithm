@@ -1,17 +1,13 @@
 package com.twitter.graph_feature_service.server.handlers
 
 import com.twitter.finatra.thrift.routing.ThriftWarmup
-import com.twitter.graph_feature_service.thriftscala.EdgeType.FavoritedBy
-import com.twitter.graph_feature_service.thriftscala.EdgeType.FollowedBy
-import com.twitter.graph_feature_service.thriftscala.EdgeType.Following
+import com.twitter.graph_feature_service.thriftscala.EdgeType.{FavoritedBy, FollowedBy, Following}
 import com.twitter.graph_feature_service.thriftscala.Server.GetIntersection
-import com.twitter.graph_feature_service.thriftscala.FeatureType
-import com.twitter.graph_feature_service.thriftscala.GfsIntersectionRequest
+import com.twitter.graph_feature_service.thriftscala.{FeatureType, GfsIntersectionRequest}
 import com.twitter.inject.utils.Handler
 import com.twitter.scrooge.Request
 import com.twitter.util.logging.Logger
-import javax.inject.Inject
-import javax.inject.Singleton
+import javax.inject.{Inject, Singleton}
 import scala.util.Random
 
 @Singleton
@@ -19,8 +15,14 @@ class ServerWarmupHandler @Inject() (warmup: ThriftWarmup) extends Handler {
 
   val logger: Logger = Logger("WarmupHandler")
 
-  // TODO: Add the testing accounts to warm-up the service.
-  private val testingAccounts: Array[Long] = Seq.empty.toArray
+  private val testingAccounts: Array[Long] = {
+    Seq(
+      12L, //jack
+      21447363L, // KATY PERRY
+      42562446L, // Stephen Curry
+      813286L // Barack Obama
+    ).toArray
+  }
 
   private def getRandomRequest: GfsIntersectionRequest = {
     GfsIntersectionRequest(

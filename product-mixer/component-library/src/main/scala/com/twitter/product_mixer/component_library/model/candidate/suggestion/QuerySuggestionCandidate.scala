@@ -231,7 +231,7 @@ object TypeaheadEventCandidate {
 /**
  * Canonical TweetAnnotationQueryCandidate model. Always prefer this version over all other variants.
  *
- * TODO Remove score from the candidate and use a Feature instead
+ * TODO(jhara) Remove score from the candidate and use a Feature instead
  */
 final class TweetAnnotationQueryCandidate private (
   override val id: String,

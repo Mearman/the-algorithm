@@ -108,7 +108,7 @@ object IntersectionValueCalculator {
   }
 
   /**
-   * TODO: for now it only computes intersection size. Will add more feature types (e.g., dot
+   * TODO(yaow): for now it only computes intersection size. Will add more feature types (e.g., dot
    * product, maximum value).
    *
    * NOTE that this function assumes both x and y are SORTED arrays.
